@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
   setScreenMode,
   selectLoggedIn,
   selectIsFreelancer,
   logout,
   selectisProfileComplete,
-} from "../../features/hospitality/hospitalitySlice";
+} from '../../features/hospitality/hospitalitySlice';
 
-import { useSelector, useDispatch } from "react-redux";
-import "../Navigation/Navigation.scss";
-import ButtonSet1 from "./ButtonSet1";
-import ButtonSet2 from "./ButtonSet2";
-import ButtonSet3 from "./ButtonSet3";
-import api from "../../api";
+import { useSelector, useDispatch } from 'react-redux';
+import '../Navigation/Navigation.scss';
+import ButtonSet1 from './ButtonSet1';
+import ButtonSet2 from './ButtonSet2';
+import ButtonSet3 from './ButtonSet3';
+// import api from "../../api";
 
 const Navigation = () => {
   const loggedIn = useSelector(selectLoggedIn);
@@ -58,7 +58,7 @@ const Navigation = () => {
               <ButtonSet2 />
             )}
             {loggedIn &&
-              (typeof isFreelancer === "undefined" ||
+              (typeof isFreelancer === 'undefined' ||
                 isProfileComplete === false) && (
                 //Logged in but user did not finish onboarding
                 <li className="nav-item justify-content-end">
@@ -83,7 +83,7 @@ const Navigation = () => {
                   className="nav-link"
                   onClick={() => {
                     dispatch(logout());
-                    api("LOGOUT");
+                    // api("LOGOUT");
                   }}
                 >
                   Log out

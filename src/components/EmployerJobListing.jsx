@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   selectJobListings,
   selectCurrentUserId,
   editJobData,
   setScreenMode,
   setDeleteJob,
-} from "../features/hospitality/hospitalitySlice";
-import { useSelector, useDispatch } from "react-redux";
-import "./EmployerJobListing.css";
-import axios from "axios";
-import { apiURL } from "../config";
+} from '../features/hospitality/hospitalitySlice';
+import { useSelector, useDispatch } from 'react-redux';
+import './EmployerJobListing.css';
+// import axios from "axios";
+// import { apiURL } from "../config";
 
 const EmployerJobListing = () => {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const EmployerJobListing = () => {
 
   const deleteJob = (job) => {
     dispatch(setDeleteJob(job));
-    axios.delete(`${apiURL}/deleteJobListing/${job.id}`);
+    // axios.delete(`${apiURL}/deleteJobListing/${job.id}`);
   };
 
   const currentUserJobs = jobListings.filter(
@@ -54,7 +54,7 @@ const EmployerJobListing = () => {
               className="eachJobListings"
               onInput={onJobEdit}
               onSubmit={onSubmit}
-              style={{ background: "white" }}
+              style={{ background: 'white' }}
             >
               <label>Contract</label>
               <select

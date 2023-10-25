@@ -1,12 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addBusiness } from "../features/hospitality/hospitalitySlice";
-import { validate } from "../validation/joi";
-import "./createBusinsessProfile.css";
-import { randomId } from "../utils";
-import axios from "axios";
-import { apiURL } from "../config";
+import React from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addBusiness } from '../features/hospitality/hospitalitySlice';
+import { validate } from '../validation/joi';
+import './createBusinsessProfile.css';
+import { randomId } from '../utils';
+// import axios from "axios";
+// import { apiURL } from "../config";
 
 const BusinessProfile = (props) => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const BusinessProfile = (props) => {
   };
 
   const validateBusinessDate = async (newBusinessData) => {
-    const result = await validate("createBusinessProfile", newBusinessData);
+    const result = await validate('createBusinessProfile', newBusinessData);
     setErrors(result);
   };
 
@@ -29,7 +29,7 @@ const BusinessProfile = (props) => {
     if (errors === true) {
       businessData.id = randomId();
       dispatch(addBusiness(businessData));
-      axios.post(`${apiURL}/createBusiness`, businessData);
+      // axios.post(`${apiURL}/createBusiness`, businessData);
     }
   };
 

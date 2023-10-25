@@ -1,21 +1,21 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectJobListings } from "../../features/hospitality/hospitalitySlice";
-import gsap from "gsap";
-import Result from "./Result";
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectJobListings } from '../../features/hospitality/hospitalitySlice';
+import gsap from 'gsap';
+import Result from './Result';
 
 const Controls = () => {
   const jobListings = useSelector(selectJobListings);
-  const [userInput, setUserInput] = useState("");
-  const [userSelect, setUserSelect] = useState("type");
-  const [contractButtonSelect, setContractButtonSelect] = useState("all");
+  const [userInput, setUserInput] = useState('');
+  const [userSelect, setUserSelect] = useState('type');
+  const [contractButtonSelect, setContractButtonSelect] = useState('all');
   const inputBox = useRef();
 
   useLayoutEffect(() => {
     gsap.fromTo(
-      ".eachResult",
+      '.eachResult',
       { y: -1000 },
-      { duration: 2, ease: "bounce.out", y: 0 }
+      { duration: 2, ease: 'bounce.out', y: 0 }
     );
   }, []);
 
@@ -28,33 +28,33 @@ const Controls = () => {
   }
 
   let filtered = [...jobListings];
-  if (userSelect === "type") {
+  if (userSelect === 'type') {
     filtered = filtered.filter((jobListing) => {
-      // return jobListing.type.toLowerCase().includes(userInput.toLowerCase());
-      return jobListing.type.some((item) =>
-        item.toLowerCase().includes(userInput.toLowerCase())
-      );
+      return jobListing.type.toLowerCase().includes(userInput.toLowerCase());
+      // return jobListing.type.some((item) =>
+      //   item.toLowerCase().includes(userInput.toLowerCase())
+      // );
     });
-  } else if (userSelect === "name") {
+  } else if (userSelect === 'name') {
     filtered = filtered.filter((jobListing) => {
       // return jobListing.type.some((item) =>
       //   item.toLowerCase().includes(userInput.toLowerCase())
       // );
       return jobListing.name.toLowerCase().includes(userInput.toLowerCase());
     });
-  } else if (userSelect === "postCode") {
+  } else if (userSelect === 'postCode') {
     filtered = filtered.filter((jobListing) => {
       return jobListing.postCode
         .toLowerCase()
         .startsWith(userInput.toLowerCase());
     });
   }
-  if (contractButtonSelect === "Full-time") {
+  if (contractButtonSelect === 'Full-time') {
     filtered = filtered.filter((jobListing) => {
       console.log(jobListing.title);
       return jobListing.contract.includes(contractButtonSelect);
     });
-  } else if (contractButtonSelect === "Part-time") {
+  } else if (contractButtonSelect === 'Part-time') {
     filtered = filtered.filter((jobListing) => {
       return jobListing.contract.includes(contractButtonSelect);
     });

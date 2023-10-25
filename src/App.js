@@ -1,31 +1,32 @@
-import React, { useEffect } from "react";
-import Login from "./components/Login";
-import AddJob from "./components/AddJob";
-import Signup from "./components/Signup";
-import CreateBusinessProfile from "./components/CreateBusinessProfile";
-import CreateUserProfile from "./components/CreateUserProfile/CreateUserProfile";
-import SearchForJob from "./components/SearchForJob";
-import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from 'react';
+import Login from './components/Login';
+import AddJob from './components/AddJob';
+import Signup from './components/Signup';
+import CreateBusinessProfile from './components/CreateBusinessProfile';
+import CreateUserProfile from './components/CreateUserProfile/CreateUserProfile';
+import SearchForJob from './components/SearchForJob';
+import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectScreenMode,
   setAllFreelancers,
   setAllJobListings,
-} from "./features/hospitality/hospitalitySlice";
-import JobDetails from "./components/JobDetails";
-import Navigation from "./components/Navigation/Navigation";
-import SearchForFreelancer from "./components/SearchForFreelancer";
-import FreelancerDetails from "./components/FreelancerDetails";
-import Onboarding from "./components/Onboarding";
-import Home from "./components/Home";
-import Footer from "./components/Footer";
-import UserProfile from "./components/UserProfile/UserProfile";
-import EmployerJobListing from "./components/EmployerJobListing";
-import TestingNav from "./components/TestingNav";
-import BusinessProfile from "./components/BusinessProfile/BusinessProfile";
-import Online from "./components/Online";
-import axios from "axios";
-import { apiURL } from "./config";
+} from './features/hospitality/hospitalitySlice';
+import JobDetails from './components/JobDetails';
+import Navigation from './components/Navigation/Navigation';
+import SearchForFreelancer from './components/SearchForFreelancer';
+import FreelancerDetails from './components/FreelancerDetails';
+import Onboarding from './components/Onboarding';
+import Home from './components/Home';
+import Footer from './components/Footer';
+import UserProfile from './components/UserProfile/UserProfile';
+import EmployerJobListing from './components/EmployerJobListing';
+import TestingNav from './components/TestingNav';
+import BusinessProfile from './components/BusinessProfile/BusinessProfile';
+import Online from './components/Online';
+// import axios from 'axios';
+// import { apiURL } from './config';
+import { freelancers, jobListings } from './sampleData';
 
 export default function App() {
   const screenMode = useSelector(selectScreenMode);
@@ -33,7 +34,9 @@ export default function App() {
   const dispatch = useDispatch();
 
   const getInitialData = async () => {
-    const { data } = await axios.get(`${apiURL}/getFreelancers`);
+    // const { data } = await axios.get(`${apiURL}/getFreelancers`);
+    // Note: we use the sample data to load some freelancers
+    const data = freelancers;
     dispatch(setAllFreelancers(data));
   };
 
@@ -42,7 +45,8 @@ export default function App() {
   }, []);
 
   const getJobListingsData = async () => {
-    const { data } = await axios.get(`${apiURL}/getJobListings`);
+    // const { data } = await axios.get(`${apiURL}/getJobListings`);
+    const data = jobListings;
     dispatch(setAllJobListings(data));
   };
 

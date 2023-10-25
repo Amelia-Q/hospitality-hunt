@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import api from "../api";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import api from "../api";
 import {
   addJobListing,
   selectCurrentUserId,
-} from "../features/hospitality/hospitalitySlice";
-import { randomId } from "../utils";
-import { validate } from "../validation/joi";
-import "./AddJob.css";
+} from '../features/hospitality/hospitalitySlice';
+import { randomId } from '../utils';
+import { validate } from '../validation/joi';
+import './AddJob.css';
 
 const AddJob = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const AddJob = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const result = await validate("addJob", postJob);
+    const result = await validate('addJob', postJob);
     if (result === true) {
       postJob.id = randomId();
       postJob.currentUserId = currentUserId;
@@ -48,8 +48,8 @@ const AddJob = () => {
               />
               {errors.name && (
                 <div className="alert alert-danger">
-                  {" "}
-                  Job title is required{" "}
+                  {' '}
+                  Job title is required{' '}
                 </div>
               )}
             </div>
@@ -64,8 +64,8 @@ const AddJob = () => {
               </select>
               {errors.contract && (
                 <div className="alert alert-danger">
-                  {" "}
-                  Select job duration is required{" "}
+                  {' '}
+                  Select job duration is required{' '}
                 </div>
               )}
             </div>
@@ -114,8 +114,8 @@ const AddJob = () => {
               />
               {errors.salary && (
                 <div className="alert alert-danger">
-                  {" "}
-                  Enter salary required{" "}
+                  {' '}
+                  Enter salary required{' '}
                 </div>
               )}
             </div>
@@ -169,7 +169,7 @@ const AddJob = () => {
               type="submit"
               className="btn btn-success addJobPost"
               onClick={() => {
-                api("ADDJOB", postJob);
+                // api("ADDJOB", postJob);
               }}
             >
               Post

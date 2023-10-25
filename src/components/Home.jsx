@@ -1,40 +1,40 @@
-import React, { useLayoutEffect } from "react";
-import { setScreenMode } from "../features/hospitality/hospitalitySlice";
-import "./Home.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedIn } from "../features/hospitality/hospitalitySlice";
-import homePageLogo from "../assets/homePageLogo.png";
-import gsap from "gsap";
+import React, { useLayoutEffect } from 'react';
+import { setScreenMode } from '../features/hospitality/hospitalitySlice';
+import './Home.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoggedIn } from '../features/hospitality/hospitalitySlice';
+import homePageLogo from '../assets/homePageLogo.png';
+import gsap from 'gsap';
 
 const Home = () => {
   const dispatch = useDispatch();
   const loggedIn = useSelector(selectLoggedIn);
 
   useLayoutEffect(() => {
-    gsap.fromTo(".logo", { y: -700 }, { duration: 3, ease: "expo.out", y: 0 });
+    gsap.fromTo('.logo', { y: -700 }, { duration: 3, ease: 'expo.out', y: 0 });
   }, []);
 
   useLayoutEffect(() => {
     gsap.fromTo(
-      ".loginButton",
+      '.loginButton',
       { y: -1000 },
-      { duration: 3.2, ease: "expo.out", y: 0 }
+      { duration: 3.2, ease: 'expo.out', y: 0 }
     );
   }, []);
 
   useLayoutEffect(() => {
     gsap.fromTo(
-      ".signupButton",
+      '.signupButton',
       { y: -1000 },
-      { duration: 3.2, ease: "expo.out", y: 0 }
+      { duration: 3.2, ease: 'expo.out', y: 0 }
     );
   }, []);
 
   useLayoutEffect(() => {
     gsap.fromTo(
-      ".loggedIn",
+      '.loggedIn',
       { y: -1000 },
-      { duration: 3.2, ease: "expo.out", y: 0 }
+      { duration: 3.2, ease: 'expo.out', y: 0 }
     );
   }, []);
 
@@ -43,7 +43,7 @@ const Home = () => {
       <div className="logoAndButtons">
         {loggedIn ? (
           <div className="homepage-menu">
-            <img className="logo" src={homePageLogo} alt="logo" />{" "}
+            <img className="logo" src={homePageLogo} alt="logo" />{' '}
             <p className="loggedIn">You are logged in.</p>
           </div>
         ) : (
@@ -51,6 +51,7 @@ const Home = () => {
             <img className="logo" src={homePageLogo} alt="logo" />
             <div>
               <button
+                disabled
                 className="btn btn-success loginButton"
                 onClick={() => {
                   dispatch(setScreenMode(2));

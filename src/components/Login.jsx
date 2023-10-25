@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import "./login.css";
-import { login, selectUser } from "../features/hospitality/hospitalitySlice";
-import { validate } from "../validation/joi";
-import { useSelector } from "react-redux";
-import sha256 from "sha256";
-import axios from 'axios';
-import { storeData } from "../storage";
-import { apiURL } from "../config";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import './login.css';
+import { login, selectUser } from '../features/hospitality/hospitalitySlice';
+import { validate } from '../validation/joi';
+import { useSelector } from 'react-redux';
+import sha256 from 'sha256';
+// import axios from 'axios';
+// import { storeData } from "../storage";
+// import { apiURL } from "../config";
 
 const Loginpage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState({});
 
   const [badCred, setBadCred] = useState(false);
@@ -25,16 +25,16 @@ const Loginpage = () => {
 
     //START USES SERVER
     //ask the server
-    const { data } = await axios.post(`${apiURL}/login`, {
-      email, password
-    });
+    // const { data } = await axios.post(`${apiURL}/login`, {
+    //   email, password
+    // });
 
-    if (data.status === 1) {
-      storeData("token", { token: data.token });
-    }
+    // if (data.status === 1) {
+    //   storeData("token", { token: data.token });
+    // }
     //END USES SERVER
 
-    const result = await validate("logIn", {
+    const result = await validate('logIn', {
       email: email,
       password: password,
     });
@@ -43,7 +43,7 @@ const Loginpage = () => {
     //check the creds *** just for dev purposes ***
     if (
       user.email !== email ||
-      user.password !== sha256(password + "cohort-ft3")
+      user.password !== sha256(password + 'cohort-ft3')
     ) {
       setBadCred(true);
       return;

@@ -1,20 +1,20 @@
-import React from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBusinesses,
   selectCurrentUserId,
   editedBusinessData,
-} from "../../features/hospitality/hospitalitySlice";
-import "./BusinessProfile.css";
-import { validate } from "../../validation/joi";
-import Name from "./Name";
-import Type from "./Type";
-import Email from "./Email";
-import PhoneNumber from "./PhoneNumber";
-import Details from "./Details";
-import axios from "axios";
-import { apiURL } from "../../config";
+} from '../../features/hospitality/hospitalitySlice';
+import './BusinessProfile.css';
+import { validate } from '../../validation/joi';
+import Name from './Name';
+import Type from './Type';
+import Email from './Email';
+import PhoneNumber from './PhoneNumber';
+import Details from './Details';
+// import axios from "axios";
+// import { apiURL } from "../../config";
 
 const BusinessProfile = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const BusinessProfile = () => {
 
   const onInput = (e) => {
     let newInputData = [];
-    if (e.target.name === "type") {
+    if (e.target.name === 'type') {
       var options = e.target.options;
       var values = [];
       for (let i = 0; i < options.length; i++) {
@@ -46,7 +46,7 @@ const BusinessProfile = () => {
   };
 
   const validateData = async (newInputData) => {
-    const result = await validate("businessProfile", newInputData);
+    const result = await validate('businessProfile', newInputData);
     setErrors(result);
   };
 
@@ -55,7 +55,7 @@ const BusinessProfile = () => {
     if (errors === true) {
       dispatch(editedBusinessData(businessData));
       setIsEdit(false);
-      axios.post(`${apiURL}/updateBusiness`, businessData);
+      // axios.post(`${apiURL}/updateBusiness`, businessData);
     }
   };
 

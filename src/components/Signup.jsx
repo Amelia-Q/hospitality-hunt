@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   signUp,
   setScreenMode,
-} from "../features/hospitality/hospitalitySlice";
-import { validate } from "../validation/joi";
-import "./Signup.scss";
-import sha256 from "sha256";
-import api from "../api";
+} from '../features/hospitality/hospitalitySlice';
+import { validate } from '../validation/joi';
+import './Signup.scss';
+import sha256 from 'sha256';
+// import api from "../api";
 
 const Signup = () => {
   const [userData, setUserData] = useState({});
@@ -19,19 +19,19 @@ const Signup = () => {
     if (errors === true) {
       //store the data in the backend
       //START API
-      const result = await api("SIGNUP", { ...userData, isFreelancer: 0 });
+      // const result = await api("SIGNUP", { ...userData, isFreelancer: 0 });
       //END API
 
       delete userData.repeat_password;
       //swap the password for a sha 256 version
-      userData.password = sha256(userData.password + "cohort-ft3");
+      userData.password = sha256(userData.password + 'cohort-ft3');
       dispatch(signUp(userData));
       dispatch(setScreenMode(3));
     }
   };
 
   const validateEmailPassword = async (newInputData) => {
-    const result = await validate("signUp", newInputData);
+    const result = await validate('signUp', newInputData);
     setErrors(result);
   };
 
